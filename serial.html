@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COM Port Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 600px;
+        }
+
+        h1 {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .settings {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .setting {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        input, select, button {
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .input-box {
+            display: flex;
+            margin-top: 20px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .input-box input {
+            flex: 1;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>COM Port Setting</h1>
+        <div class="settings">
+            <div class="setting">
+                <label for="com-port">COM Port:</label>
+               
+                <select id="com-port">
+                    <option value="COM"></option>
+                    <option value="COM1">COM1</option>
+                    <option value="COM2">COM2</option>
+                    <option value="COM3">COM3</option>
+                    <option value="COM4">COM4</option>
+                    <option value="COM5">COM5</option>
+                    <option value="COM6">COM6</option>
+                </select>
+            </div>
+            <div class="setting">
+                <label for="baudrate">Baudrate:</label>
+                <select id="baudrate">
+                    <option value="9600">9600</option>
+                    <option value="115200" selected>115200</option>
+                    <option value="57600">57600</option>
+                </select>
+            </div>
+            <div class="setting">
+                <label for="stopbits">StopBits:</label>
+                <select id="stopbits">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+            <div class="setting">
+                <label for="parity">Parity:</label>
+                <select id="parity">
+                    <option value="None" selected>None</option>
+                    <option value="Even">Even</option>
+                    <option value="Odd">Odd</option>
+                    <option value="Mark">Mark</option>
+                </select>
+            </div>
+            <div class="setting">
+                <label for="bytesize">ByteSize:</label>
+                <select id="bytesize">
+                    <option value="8" selected>8</option>
+                    <option value="7">7</option>
+                </select>
+            </div>
+            <div class="setting">
+                <label for="flow-control">Flow Control:</label>
+                <select id="flow-control">
+                    <option value="No Ctrl Flow" selected>No Ctrl Flow</option>
+                    <option value="Hardware">Hardware</option>
+                    <option value="Software">Software</option>
+                </select>
+            </div>
+        </div>
+        <button style="margin-top: 20px; width: 100%;" onclick="openPort()">Open Port</button>
+
+        <div class="input-box">
+            <input type="text" id="input-text" placeholder="INPUT TEXT BOX">
+            <button onclick="sendMessage()">SEND</button>
+        </div>
+    </div>
+
+    <script>
+        function openPort() {
+            const comPort = document.getElementById('com-port').value;
+            const baudRate = document.getElementById('baudrate').value;
+            const stopBits = document.getElementById('stopbits').value;
+            const parity = document.getElementById('parity').value;
+            const byteSize = document.getElementById('bytesize').value;
+            const flowControl = document.getElementById('flow-control').value;
+
+            alert(`Opening port with settings:\nCOM Port: ${comPort}\nBaudrate: ${baudRate}\nStopBits: ${stopBits}\nParity: ${parity}\nByteSize: ${byteSize}\nFlow Control: ${flowControl}`);
+        }
+
+        function sendMessage() {
+            const message = document.getElementById('input-text').value;
+            alert(`Sending message: ${message}`);
+        }
+    </script>
+</body>
+</html>
